@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login to Hotel Manager Account</title>
+</head>
+<body>
+    <center>
+        <form th:action="${loginAction}" method="post" th:object="${loginmodel}" >
+            <label>Email: </label> <br>
+            <input th:field="${loginModel.email}" type="email" /> <br>
+            <label>Password: </label> <br>
+            <input th:field="${loginModel.password}" type="password" />
+            <span th:text="${error}"></span> <br/><br/>
+            <input type="submit" value="Login"/>
+            <span>No Account? <a href="/hotel/registerHotelManager">Register</a></span>
+        </form>
+    </center>
+</body>
+</html>

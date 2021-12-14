@@ -6,30 +6,30 @@
 </head>
 <body>
 <center>
-    <form>
+    <form action="/hotel/registerHotelManager" method="post" th:object="${user}">
         <label>
             Emri:
-            <input type="text" />
-        </label>
+            <input type="text" th:field="${user.name}" />
+        </label> <br>
         <label>
             Mbiemri:
-            <input type="text" />
-        </label>
+            <input type="text" th:field="${user.lastName}" />
+        </label><br>
 
         <label>
             Email:
-            <input type="email" />
-        </label>
+            <input type="email" th:field="${user.email}" />
+        </label><br>
         <label>
             Password:
-            <input type="password" />
-        </label>
+            <input type="password" th:field="${user.password}" />
+        </label><br>
 
-        <input type="submit" value="Register"/>
+        <input type="submit" value="Register"/><br>
 
-        <p>Already registered? <a>Log in!</a></p>
-
+        <p>Already registered? <a href="/hotel/login">Log in!</a></p><br>
     </form>
+    <span style="color: red" th:text="${error}"></span>
 </center>
 </body>
 </html>

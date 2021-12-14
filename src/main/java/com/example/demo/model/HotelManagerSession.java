@@ -3,14 +3,18 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-public class ManagerSession {
+public class HotelManagerSession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String sessionHashCode;
     private String ipAddress;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private HotelManager hotelManager;
+
 
     public String getSessionHashCode() {
         return sessionHashCode;
@@ -28,17 +32,14 @@ public class ManagerSession {
         this.ipAddress = ipAddress;
     }
 
-    public Manager getManager() {
-        return manager;
+    public HotelManager getManager() {
+        return hotelManager;
     }
 
-    public void setManager(Manager manager) {
-        this.manager = manager;
+    public void setManager(HotelManager hotelManager) {
+        this.hotelManager = hotelManager;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Manager manager;
 
     public void setId(Long id) {
         this.id = id;

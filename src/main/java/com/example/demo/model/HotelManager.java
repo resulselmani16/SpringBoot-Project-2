@@ -5,21 +5,30 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Manager {
+public class HotelManager {
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //perveq id's i ka edhe qato attributes qe ka me i marre prej inputeve
 
     private String name;
     private String lastName;
     private String email;
     private String password;
 
+
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private List<ManagerSession> managerSessionList;
+    private List<HotelManagerSession> hotelManagerSessionList;
 
+    public List<HotelManagerSession> getHotelManagerSessionList() {
+        return hotelManagerSessionList;
+    }
+
+
+    public void setHotelManagerSessionList(List<HotelManagerSession> hotelManagerSessionList) {
+        this.hotelManagerSessionList = hotelManagerSessionList;
+    }
 
 
     public String getName() {
